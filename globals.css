@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black text-white;
+  font-family: system-ui, sans-serif;
+}
+
+.card {
+  @apply bg-zinc-900 rounded-xl p-6 border border-zinc-800;
+}
+
+.button {
+  @apply text-sm px-4 py-2 rounded-lg bg-white text-black hover:bg-zinc-200 transition;
+}
+
+.input {
+  @apply w-full bg-zinc-800 border border-zinc-700 p-3 rounded-md focus:outline-none focus:border-white;
+}
