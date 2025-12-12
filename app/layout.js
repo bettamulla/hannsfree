@@ -1,6 +1,8 @@
+import "./globals.css";   // ← this line is missing right now
+
 export const metadata = {
-  title: "HanssFree",
-  description: "Autonomous Brand Engine"
+  title: "HannsFree",
+  description: "Autonomous Brand Engine",
 };
 
 export default function RootLayout({ children }) {
@@ -14,3 +16,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
