@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   title: "HannsFree",
   description: "Autonomous Brand Engine",
@@ -6,9 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
