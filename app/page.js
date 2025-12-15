@@ -1,94 +1,66 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
-export default function Page() {
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
+export default function Home() {
+  const [input, setInput] = useState("");
+  const [brands, setBrands] = useState([]);
 
-  const paletteStyle = useMemo(() => {
-    const accent = data?.palette?.colors?.[3] || "#8AA2FF";
-    const accent2 = data?.palette?.colors?.[4] || "#6D28D9";
-    return { "--accent": accent, "--accent2": accent2 };
-  }, [data]);
+  function generateBrand() {
+    if (!input) return;
 
-  async function onGenerate(e) {
-    e.preventDefault();
-    setLoading(true);
-    setData(null);
-
-    // local generator so it works even with zero backend setup
-    const mod = await import("../lib/generateBrand");
-    const result = mod.generateBrand(name);
-    setData(result);
-
-    setLoading(false);
+    setBrands([
+      `${input} Labs`,
+      `${input} Studio`,
+      `${input} Co`,
+      `${input} Systems`,
+      `${input} Group`
+    ]);
   }
 
   return (
-    <div style={paletteStyle} className="wrap">
-      <div className="bgGlow" />
+    <main style={{
+      minHeight: "100vh",
+      background: "#0a0a0a",
+      color: "#ffffff",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "16px"
+    }}>
+      <h1>HannsFree</h1>
+      <p>Instant brand ideas.</p>
 
-      <header className="hero">
-        <div className="badge">HannsFree • Brand Engine</div>
-        <h1>Generate a full brand kit in seconds.</h1>
-        <p>Name → vibe → palette → copy. This is an actual generator.</p>
-      </header>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter a word"
+        style={{
+          padding: "12px",
+          width: "260px",
+          borderRadius: "6px",
+          border: "none"
+        }}
+      />
 
-      <section className="card">
-        <h2>Create Brand</h2>
+      <button
+        onClick={generateBrand}
+        style={{
+          padding: "12px 20px",
+          borderRadius: "6px",
+          border: "none",
+          cursor: "pointer"
+        }}
+      >
+        Generate
+      </button>
 
-        <form onSubmit={onGenerate} className="row">
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Brand name (e.g. Cupcake, Puffer Gurlz)"
-            className="input"
-          />
-          <button className="btn" disabled={loading}>
-            {loading ? "Generating…" : "Generate"}
-          </button>
-        </form>
-      </section>
-
-      {data && (
-        <section className="grid">
-          <div className="panel">
-            <h3>Brand Suggestions</h3>
-            <div className="chips">
-              {data.suggestions?.map((s) => (
-                <span key={s} className="chip">{s}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className="panel">
-            <h3>Tagline</h3>
-            <p className="big">{data.tagline}</p>
-            <p className="muted">{data.vibe}</p>
-          </div>
-
-          <div className="panel">
-            <h3>Palette: {data.palette?.name}</h3>
-            <div className="swatches">
-              {data.palette?.colors?.map((c) => (
-                <div key={c} className="swatch">
-                  <span style={{ background: c }} />
-                  <code>{c}</code>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="panel">
-            <h3>What you get</h3>
-            <ul className="list">
-              {data.deliverables?.map((d) => <li key={d}>{d}</li>)}
-            </ul>
-          </div>
-        </section>
-      )}
-    </div>
+      <div>
+        {brands.map((b, i) => (
+          <div key={i}>{b}</div>
+        ))}
+      </div>
+    </main>
   );
 }
