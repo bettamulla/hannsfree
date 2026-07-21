@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hannsfree — the revenue your Shopify store isn't earning</title>
+  <meta name="description" content="8 questions. 90 seconds. What email and SMS should be earning your Shopify store, and what it currently isn't." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%237455FF'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='48' fill='%230B0B0F'%3EHF%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --violet:#7455FF;
+    --ink:#0B0B0F;
+    --ink65:rgba(11,11,15,0.65);
+    --ink50:rgba(11,11,15,0.5);
+    --ink12:rgba(11,11,15,0.12);
+    --ink06:rgba(11,11,15,0.06);
+    --paper:#F7F6FB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    background:var(--violet);
+    color:var(--ink);
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:14px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+  .shell{max-width:576px;margin:0 auto;padding:0 20px}
+
+  /* logo */
+  .logo{display:block;margin:0 auto}
+  .brandline{text-align:center;font-size:10px;letter-spacing:2.6px;text-transform:uppercase;color:var(--ink65);margin-top:2px}
+
+  .hero{padding:44px 0 8px;text-align:center}
+  h1{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(34px,8.6vw,46px);line-height:1.06;margin:26px 0 18px;letter-spacing:-0.01em}
+  .sub{font-size:13.5px;line-height:1.75;color:var(--ink65);margin-bottom:8px}
+  .note{font-size:11.5px;color:var(--ink50);margin-bottom:30px}
+
+  /* card */
+  .card{background:var(--ink);color:#EFEDF7;padding:26px 20px;margin-bottom:26px}
+  .card.paper{background:var(--paper);color:var(--ink)}
+
+  .prog{height:2px;background:rgba(255,255,255,.12);margin-bottom:24px}
+  .prog i{display:block;height:100%;background:var(--violet);transition:width .45s ease}
+  .step{font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:10px}
+  .q{font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.24;margin-bottom:12px}
+  .why{font-size:12px;line-height:1.7;color:rgba(255,255,255,.6);border-left:2px solid var(--violet);padding-left:13px;margin-bottom:20px}
+  .why b{color:var(--violet);font-weight:600}
+  input[type=number]{
+    width:100%;background:transparent;border:1px solid rgba(255,255,255,.16);
+    color:#fff;font-family:'JetBrains Mono',monospace;font-size:22px;
+    padding:17px 15px;outline:none;
+  }
+  input[type=number]:focus{border-color:var(--violet)}
+  input::placeholder{color:rgba(255,255,255,.24)}
+  input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .skip{font-size:11px;color:rgba(255,255,255,.4);margin:12px 0 16px;line-height:1.65}
+  .nav{display:flex;gap:9px}
+  .nav button{
+    flex:1;height:54px;background:var(--violet);color:#fff;border:none;cursor:pointer;
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+    letter-spacing:1.5px;text-transform:uppercase;transition:transform .12s ease;
+  }
+  .nav button:active{transform:scale(.98)}
+  .nav .back{flex:0 0 54px;background:transparent;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.55);font-size:17px;letter-spacing:0}
+
+  /* result */
+  .res{display:none}
+  .res.on{display:block;animation:rise .5s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .rbig{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(50px,13vw,70px);line-height:1;color:var(--violet);margin:4px 0 2px}
+  .rsub{font-size:12.5px;color:rgba(255,255,255,.55);margin-bottom:24px}
+  .row{margin-bottom:13px}
+  .rowtop{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;margin-bottom:5px}
+  .rowtop b{font-weight:500;color:#EFEDF7}
+  .rowtop i{font-style:normal;color:var(--violet);font-weight:600}
+  .bar{height:4px;background:rgba(255,255,255,.08)}
+  .bar i{display:block;height:100%;background:var(--violet);transition:width .9s ease}
+
+  /* sections on purple */
+  .band{padding:40px 0}
+  .eyebrow{font-size:10px;letter-spacing:2.6px;text-transform:uppercase;color:var(--ink50);margin-bottom:14px;display:flex;align-items:center;gap:11px}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--ink)}
+  h2{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,7vw,36px);line-height:1.12;margin-bottom:16px}
+  h3{font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.2;margin-bottom:8px}
+  p{font-size:13.5px;line-height:1.8;color:var(--ink65);margin-bottom:15px}
+  p.lead{color:var(--ink);font-weight:500}
+  .card p{color:rgba(255,255,255,.62)}
+  .card p.lead{color:#EFEDF7}
+  .card h2,.card h3{color:#EFEDF7}
+
+  /* who */
+  .who{padding-bottom:10px}
+  .who p{
+    font-family:'Instrument Serif',Georgia,serif;
+    font-size:21px;line-height:1.45;letter-spacing:-0.005em;
+    color:var(--ink);margin:0 0 22px;
+  }
+  .who p:last-child{margin-bottom:0}
+  .who .who-1{font-size:25px}
+  .who .who-2,.who .who-3{color:var(--ink65)}
+  .iglink{
+    color:var(--ink);text-decoration:none;
+    border-bottom:1.5px solid var(--ink);
+    padding-bottom:1px;
+  }
+  .iglink:active{opacity:.6}
+
+  /* cta */
+  .cta{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    width:100%;padding:19px 20px;margin-top:6px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    transition:transform .12s ease;
+  }
+  .cta:active{transform:scale(.985)}
+  .cta small{display:block;font-weight:400;text-transform:none;letter-spacing:0;font-size:11.5px;color:rgba(255,255,255,.55);margin-top:4px}
+  .cta.on-dark{background:var(--violet)}
+  .cta.on-dark small{color:rgba(255,255,255,.7)}
+  .arw{font-size:15px;flex-shrink:0}
+
+  /* build */
+  .pricerow{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink12);padding-bottom:14px;margin-bottom:18px}
+  .amt{font-size:27px;font-weight:700}
+  .flows{border-top:1px solid var(--ink12);margin:18px 0}
+  .flows div{padding:11px 0;border-bottom:1px solid var(--ink12);font-size:12.5px;color:var(--ink)}
+  .flows div::before{content:"";display:inline-block;width:4px;height:4px;background:var(--ink);margin-right:11px;vertical-align:middle}
+  .terms{display:flex;border:1px solid var(--ink12)}
+  .terms div{flex:1;padding:14px;border-right:1px solid var(--ink12)}
+  .terms div:last-child{border-right:none}
+  .terms .k{font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink50);margin-bottom:5px}
+  .terms .v{font-family:'Instrument Serif',Georgia,serif;font-size:17px}
+
+  .stat{display:flex;align-items:baseline;gap:13px;margin:20px 0}
+  .stat b{font-family:'Instrument Serif',Georgia,serif;font-size:54px;color:var(--violet);line-height:1}
+  .stat span{font-size:12.5px;line-height:1.65;color:rgba(255,255,255,.62)}
+
+  footer{padding:26px 0 40px;text-align:center}
+  footer p{font-size:11px;color:var(--ink50);margin:0}
+  footer span{font-size:.8em}
+
+  @media(max-width:520px){
+    .terms{flex-direction:column}
+    .terms div{border-right:none;border-bottom:1px solid var(--ink12)}
+    .terms div:last-child{border-bottom:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- HERO -->
+  <div class="hero">
+    <svg class="logo" width="104" height="104" viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg" aria-label="Hannsfree">
+      <g fill="none" stroke="#0B0B0F" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 640 571 A 560 560 0 0 0 640 1429"/>
+        <path d="M 1360 571 A 560 560 0 0 1 1360 1429"/>
+        <g id="hf-hand">
+          <path d="M 585 645 C 598 555, 660 488, 762 466 C 880 441, 992 476, 1082 504 C 1180 534, 1292 540, 1382 562"/>
+          <path d="M 648 598 C 700 640, 772 660, 842 654"/>
+          <path d="M 1052 518 C 1100 540, 1132 584, 1128 632 C 1125 662, 1100 670, 1084 650 C 1071 634, 1069 604, 1077 576"/>
+          <path d="M 1134 532 C 1182 554, 1214 598, 1210 646 C 1207 676, 1182 684, 1166 664 C 1153 648, 1151 618, 1159 590"/>
+          <path d="M 1216 544 C 1264 566, 1296 610, 1292 658 C 1289 688, 1264 696, 1248 676 C 1235 660, 1233 630, 1241 602"/>
+          <path d="M 1298 554 C 1348 576, 1382 622, 1378 672 C 1375 704, 1349 712, 1332 691 C 1318 674, 1316 642, 1324 613"/>
+        </g>
+        <use href="#hf-hand" transform="rotate(180 1000 1000)"/>
+      </g>
+      <text x="1000" y="1105" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-weight="700" font-size="400" fill="#0B0B0F" letter-spacing="-16">HF</text>
+    </svg>
+    <div class="brandline">Hannsfree</div>
+
+    <h1>Email should be a quarter of your revenue. What is yours doing?</h1>
+    <p class="sub">8 questions. 90 seconds. A number at the end that shows what your store should be earning from email and SMS, and what it is earning now.</p>
+    <p class="note">No email required. The number is yours either way.</p>
+  </div>
+
+  <!-- DIAGNOSTIC -->
+  <div class="card" id="diag">
+    <div class="prog"><i id="prog" style="width:12.5%"></i></div>
+
+    <div id="qbox">
+      <div class="step" id="step">Question 1 of 8</div>
+      <div class="q" id="qtext"></div>
+      <div class="why" id="qwhy"></div>
+      <input id="qin" type="number" inputmode="decimal" placeholder="0">
+      <div class="skip">Do not know it? Leave it blank and keep going. The estimate just gets more conservative.</div>
+      <div class="nav">
+        <button class="back" id="back" aria-label="Back">←</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+
+    <div class="res" id="res">
+      <div class="step">Left on the table, every month</div>
+      <div class="rbig" id="rbig">£0</div>
+      <div class="rsub" id="rsub">£0 a year, if nothing changes.</div>
+      <div id="rows"></div>
+      <p style="font-size:11.5px;color:rgba(255,255,255,.42);line-height:1.7;margin:22px 0 0">
+        This is an estimate from benchmarks, not from your account. The real number is sitting in your Klaviyo right now. That is what the call is for.
+      </p>
+      <a class="cta on-dark" href="#book" style="margin-top:18px">
+        <span>See your real number<small>20 minutes. Free. I go into your account with you.</small></span>
+        <span class="arw">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- WALKTHROUGH -->
+  <div class="band" id="book">
+    <div class="eyebrow">The next step</div>
+    <h2>The real number is in your account.</h2>
+    <p>That estimate is a decent start, but it is built from benchmarks. Not from you.</p>
+    <p>Give me 20 minutes and I will go into your Klaviyo with you. I will show you what each flow is earning, what the missing ones would have earned, and what the last 90 days actually cost.</p>
+    <p class="lead">Free. No pitch. You keep everything I find, whatever you decide after.</p>
+    <a class="cta" href="#" id="bookLink">
+      <span>Book the 20 minute walkthrough<small>Bring your number. We go through the whole thing.</small></span>
+      <span class="arw">→</span>
+    </a>
+  </div>
+
+  <!-- BUILD -->
+  <div class="band">
+    <div class="eyebrow">If you want it built</div>
+    <div class="pricerow">
+      <h2 style="margin:0">Flow Build</h2>
+      <span class="amt">£2,500</span>
+    </div>
+    <p>7 flows. Live in 30 days. Then they run without you.</p>
+    <div class="flows">
+      <div>Welcome</div>
+      <div>Abandoned cart</div>
+      <div>Abandoned checkout</div>
+      <div>Browse abandonment</div>
+      <div>Post purchase</div>
+      <div>Cross sell</div>
+      <div>Winback</div>
+      <div>SMS running alongside each one</div>
+    </div>
+    <p>Written in your voice, not from a template. I sit down with you first and take the brand apart. Why you started it. What you actually believe. The stories only you have. Then the emails sound like the person who built the thing, instead of like every other store in your category.</p>
+    <p class="lead">That is the part no software does for you.</p>
+    <div class="terms">
+      <div><div class="k">Payment</div><div class="v">Half up front</div></div>
+      <div><div class="k">Live in</div><div class="v">30 days</div></div>
+      <div><div class="k">Proven in</div><div class="v">Your Klaviyo</div></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--ink50);margin-top:16px;margin-bottom:0">
+      Then you watch the revenue land, flow by flow, in your own account. You will know exactly what each one earned.
+    </p>
+  </div>
+
+  <!-- OWN -->
+  <div class="band">
+    <div class="eyebrow">Why this one matters</div>
+    <div class="card">
+      <h2>Ads you rent. This you own.</h2>
+      <p>Ads cost more every year and you never own the audience. Stop paying and it is gone the same afternoon.</p>
+      <p>Your list is yours. It costs nothing to send to.</p>
+      <div class="stat">
+        <b>25%</b>
+        <span>of total revenue is what email and SMS does for a healthy store.<br>Plenty run closer to 30.</span>
+      </div>
+      <p>Yours is doing a fraction of that, and the gap is not a mystery. It is a set of flows nobody has built yet.</p>
+      <p class="lead">Build them once. They earn every month after.</p>
+      <a class="cta on-dark" href="#book" style="margin-top:18px">
+        <span>Book the 20 minute walkthrough<small>Free. You keep the findings either way.</small></span>
+        <span class="arw">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- WHO -->
+  <div class="band who">
+    <div class="eyebrow">Who is behind this</div>
+    <p class="who-1">I'm <a class="iglink" href="https://instagram.com/kwon.dough" target="_blank" rel="noopener noreferrer">Kwon</a>. I build the email and SMS channel for UK Shopify stores.</p>
+    <p class="who-2">Before I've hollered at anyone, I've already been a customer. Signed up. Browsed. Put something in the basket and walked away from it. Then I sit back and see what my inbox picks up.</p>
+    <p class="who-3">Usually nothing. And that tells me plenty, because whatever should have landed is exactly what I end up building.</p>
+  </div>
+
+  <footer>
+    <p>Growth, engineered by <span>Hannsfree</span></p>
+  </footer>
+</div>
+
+<script>
+/* ---- put your real booking link here ---- */
+var BOOKING_URL = "#";   /* e.g. "https://cal.com/kwon/walkthrough" */
+document.getElementById('bookLink').href = BOOKING_URL;
+
+var Q = [
+  { k:'aov', t:'What is your average order value?', ph:'55',
+    w:'<b>AOV.</b> The multiplier on everything below. Every cart, browse and checkout we win back is worth this much.' },
+  { k:'carts', t:'How many carts get abandoned each month?', ph:'400',
+    w:'<b>Cart abandonment.</b> A proper 3 touch flow wins back around 10% of these. Most stores run one weak email, or none.' },
+  { k:'checkouts', t:'How many checkouts start but never finish?', ph:'150',
+    w:'<b>Checkout abandonment.</b> These people were at the payment stage and walked. Highest intent on your whole site. Around 6% is recoverable.' },
+  { k:'browsers', t:'How many visitors look and leave without buying?', ph:'6000',
+    w:'<b>Browse abandonment.</b> Converts around 3% of the ones we can identify.' },
+  { k:'subs', t:'How many new subscribers do you get a month?', ph:'500',
+    w:'<b>Welcome.</b> A subscriber who never gets a proper welcome sequence is a first purchase that never happens. Benchmark gap is 4%.' },
+  { k:'orders', t:'How many orders do you take a month?', ph:'300',
+    w:'<b>Post purchase.</b> Orders with nothing behind them leave repeat revenue on the table. Roughly 7% of order value goes unclaimed.' },
+  { k:'emailrev', t:'What is email making you a month right now?', ph:'2000',
+    w:'<b>Campaigns.</b> Cadence gaps typically leave 17.5% of your existing email revenue unrealised.' },
+  { k:'openrate', t:'What is your average open rate?', ph:'22',
+    w:'<b>Deliverability.</b> Under 15% and the inbox providers are burying you. That puts around 15% of email revenue at risk.' }
+];
+
+var i=0, A={};
+var step=document.getElementById('step'), qtext=document.getElementById('qtext'),
+    qwhy=document.getElementById('qwhy'), qin=document.getElementById('qin'),
+    prog=document.getElementById('prog'), qbox=document.getElementById('qbox'),
+    res=document.getElementById('res');
+
+function draw(){
+  var q=Q[i];
+  step.textContent='Question '+(i+1)+' of '+Q.length;
+  qtext.textContent=q.t;
+  qwhy.innerHTML=q.w;
+  qin.value = A[q.k]!=null ? A[q.k] : '';
+  qin.placeholder = q.ph;
+  prog.style.width = ((i+1)/Q.length*100)+'%';
+  document.getElementById('back').style.visibility = i===0?'hidden':'visible';
+  document.getElementById('next').textContent = i===Q.length-1 ? 'See the number' : 'Next';
+  try{ qin.focus({preventScroll:true}); }catch(e){ qin.focus(); }
+}
+function save(){ var v=parseFloat(qin.value); A[Q[i].k]=isNaN(v)?0:v; }
+
+document.getElementById('next').onclick=function(){
+  save();
+  if(i<Q.length-1){ i++; draw(); } else { show(); }
+};
+document.getElementById('back').onclick=function(){ save(); if(i>0){ i--; draw(); } };
+qin.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); document.getElementById('next').click(); } });
+
+function gbp(n){ return '£'+Math.round(n).toLocaleString('en-GB'); }
+
+function show(){
+  var aov=A.aov||0;
+  var L=[
+    {n:'Abandoned cart',     v:(A.carts||0)*aov*0.10},
+    {n:'Abandoned checkout', v:(A.checkouts||0)*aov*0.06},
+    {n:'Browse abandonment', v:(A.browsers||0)*aov*0.03},
+    {n:'Welcome sequence',   v:(A.subs||0)*aov*0.04},
+    {n:'Post purchase',      v:(A.orders||0)*aov*0.07},
+    {n:'Campaign cadence',   v:(A.emailrev||0)*0.175},
+    {n:'Deliverability',     v:(A.openrate && A.openrate<15) ? (A.emailrev||0)*0.15 : 0}
+  ].filter(function(x){return x.v>0}).sort(function(a,b){return b.v-a.v});
+
+  var total=L.reduce(function(s,x){return s+x.v},0);
+
+  if(total<=0){
+    document.getElementById('rbig').textContent='—';
+    document.getElementById('rsub').textContent='No inputs, no estimate. Go back and give it at least your carts and your average order value.';
+    document.getElementById('rows').innerHTML='';
+  } else {
+    document.getElementById('rbig').textContent=gbp(total);
+    document.getElementById('rsub').textContent=gbp(total*12)+' a year, if nothing changes.';
+    var max=L[0].v;
+    document.getElementById('rows').innerHTML = L.map(function(x){
+      return '<div class="row"><div class="rowtop"><b>'+x.n+'</b><i>'+gbp(x.v)+'/mo</i></div>'+
+             '<div class="bar"><i style="width:'+(x.v/max*100)+'%"></i></div></div>';
+    }).join('');
+  }
+  qbox.style.display='none';
+  res.classList.add('on');
+}
+draw();
+</script>
+</body>
+</html>
